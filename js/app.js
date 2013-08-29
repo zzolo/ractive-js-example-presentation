@@ -7,6 +7,13 @@
   // Container for output callbacks
   var outputHandlers = {};
   var busStop = '43275';
+  var poller;
+  var stops = {};
+  
+  // Get stops
+  $.getJSON('js/stops.json', function(data) {
+    stops = data;
+  });
 
 	// Full list of configuration options available here:
 	// https://github.com/hakimel/reveal.js#configuration
@@ -29,8 +36,8 @@
 		]
 	});
 	
-	// Event pooler for bustop API
-	function poolBusStopAPI() {
+	// Event poll for bustop API
+	function pollBusStopAPI() {
   	var jsonpTemplate = 'http://svc.metrotransit.org/NexTrip/[[BUSSTOP]]?format=json&callback=?';
   	var interval = 2000;
   	var poolID;
@@ -45,13 +52,40 @@
       return data;
   	};
   	
-  	pollID = window.setInterval(function() {
+  	var getData = function() {
   	  $.getJSON(jsonpTemplate.replace('[[BUSSTOP]]', busStop), function(data) {
     	  $(window).trigger('bus', { buses: parseData(data) });
   	  });
-  	}, interval);
+  	};
+  	
+  	return {
+    	poll: function() {
+      	pollID = window.setInterval(function() {
+      	  getData();
+      	}, interval);
+      },
+      update: function() {
+        getData();
+      }
+    }
 	}
-	poolBusStopAPI();
+	poller = new pollBusStopAPI();
+	poller.poll();
+	
+	// Get closest stop
+	function getClosestStop(done) {
+	  var min;
+	
+	  navigator.geolocation.getCurrentPosition(function(position) {
+	    if (_.isObject(position)) {
+        min = _.min(stops, function(s) {
+          return Math.sqrt(Math.pow((s.lat - position.coords.latitude), 2) + Math.pow((s.lon - position.coords.longitude), 2));
+        });
+        
+        done(min.id);
+      }
+    });
+	}
 	
 	// Handle slide and render output
 	function outputSlideHanderler(e) {
@@ -80,6 +114,8 @@
 	
 	// Step 1
 	outputHandlers.step01 = function($el, template) {
+	  busStop = '43275';
+	
 	  var ractiveView = new Ractive({
   	  el: $el,
   	  template: template,
@@ -121,6 +157,8 @@
 	
 	// Step 2
 	outputHandlers.step02 = function($el, template) {
+	  busStop = '43275';
+	
 	  var ractiveView = new Ractive({
   	  el: $el,
   	  template: template,
@@ -137,6 +175,8 @@
 	
 	// Step 3
 	outputHandlers.step03 = function($el, template) {
+	  busStop = '43275';
+	
 	  var buses = [];
 	  var count = 0;
 	  var ractiveView = new Ractive({
@@ -168,8 +208,67 @@
 	    ractiveView.set('buses', _.first(data.buses, 3));
 	  });
 	  
+	  ractiveView.observe('stop', function(e) {
+	    busStop = this.get('stop');
+	    poller.update();
+	  });
+	  
+	  ractiveView.set('stop', '17982');
+	};
+	
+	// Step 5
+	outputHandlers.step05 = function($el, template) {
+	  busStop = '43275';
+	
+	  var ractiveView = new Ractive({
+  	  el: $el,
+  	  template: template,
+  	  data: {
+    	  stop: busStop,
+    	  buses: []
+  	  }
+	  });
+	  
+	  $(window).on('bus', function(e, data) {
+	    ractiveView.set('buses', _.first(data.buses, 3));
+	  });
+	  
 	  ractiveView.on('highlight', function(e) {
 	    $(e.original.target).toggleClass('highlight');
+	  });
+	};
+	
+	// Step 6
+	outputHandlers.step06 = function($el, template) {
+	  busStop = '43275';
+	
+	  var ractiveView = new Ractive({
+  	  el: $el,
+  	  template: template,
+  	  data: {
+    	  stop: busStop,
+    	  buses: []
+  	  }
+	  });
+	  
+	  $(window).on('bus', function(e, data) {
+	    ractiveView.set('buses', _.first(data.buses, 3));
+	  });
+	  
+	  ractiveView.observe('stop', function(e) {
+	    busStop = this.get('stop');
+	    poller.update();
+	  });
+	  
+	  ractiveView.on('highlight', function(e) {
+	    $(e.original.target).toggleClass('highlight');
+	  });
+	  
+	  ractiveView.on('closest', function(e) {
+	    e.original.preventDefault();
+	    getClosestStop(function(stop) {
+  	     ractiveView.set('stop', stop);
+	    });
 	  });
 	};
 	

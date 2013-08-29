@@ -286,6 +286,47 @@ onBusUpdate(function(data) {
 				
 				
 				<section>
+					<h2>Observe</h2>
+				</section>
+				
+				<section>
+					<pre><code data-trim class="javascript">
+ractiveView.observe('stop', function(e) {
+  busStop = this.get('stop');
+  poller.update();
+});
+
+ractiveView.set('stop', '17982');
+					</code></pre>
+				</section>
+				
+				<section>
+					<div class="output" data-output-handler="step04">
+					</div>
+				</section>
+				
+				<script type="text/template" id="output-template-step04">
+				  <div class="bus-stop-app">
+  				  <h2>Bus Stop: {{stop}}</h2>
+  				  <ul>
+  				    {{# buses:i}}
+  				      <li on-hover="highlight">{{Route}}{{Terminal}}
+  				        {{# Actual}}
+  				          {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
+  				        {{/ Actual}}
+  				        {{^ Actual}} arrives at {{DepartureText}}{{/ Actual}}
+  				      </li>
+  				    {{/ buses}}
+  				  </ul>
+				  </div>
+				</script>
+				
+				
+				
+				<!-- =========================================== -->
+				
+				
+				<section>
 					<h2>Events</h2>
 				</section>
 				
@@ -314,12 +355,62 @@ ractiveView.on('highlight', function(e) {
 				</section>
 				
 				<section>
-					<div class="output" data-output-handler="step04">
+					<div class="output" data-output-handler="step05">
 					</div>
 				</section>
 				
-				<script type="text/template" id="output-template-step04">
+				<script type="text/template" id="output-template-step05">
 				  <div class="bus-stop-app">
+  				  <h2>Bus Stop: {{stop}}</h2>
+  				  <ul>
+  				    {{# buses:i}}
+  				      <li on-hover="highlight">{{Route}}{{Terminal}}
+  				        {{# Actual}}
+  				          {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
+  				        {{/ Actual}}
+  				        {{^ Actual}} arrives at {{DepartureText}}{{/ Actual}}
+  				      </li>
+  				    {{/ buses}}
+  				  </ul>
+				  </div>
+				</script>
+				
+				<section>
+					<pre><code data-trim class="html">
+&lt;a href=&quot;#&quot; on-tap=&quot;closest&quot; class=&quot;geolocate-stop&quot; title=&quot;Find closest stop&quot;&gt;&lt;/a&gt;
+&lt;h2&gt;Bus Stop: {{stop}}&lt;/h2&gt;
+&lt;ul&gt;
+  {{# buses:i}}
+    &lt;li on-hover=&quot;highlight&quot;&gt;{{Route}}{{Terminal}}
+      {{# Actual}}
+        {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
+      {{/ Actual}}
+      {{^ Actual}} arrives at {{DepartureText}}{{/ Actual}}
+    &lt;/li&gt;
+  {{/ buses}}
+&lt;/ul&gt;
+					</code></pre>
+				</section>
+				
+				<section>
+					<pre><code data-trim class="javascript">
+ractiveView.on('closest', function(e) {
+  e.original.preventDefault();
+  getClosestStop(function(stop) {
+     ractiveView.set('stop', stop);
+  });
+});
+					</code></pre>
+				</section>
+				
+				<section>
+					<div class="output" data-output-handler="step06">
+					</div>
+				</section>
+				
+				<script type="text/template" id="output-template-step06">
+				  <div class="bus-stop-app">
+				    <a href="#" on-tap="closest" class="geolocate-stop" title="Find closest stop"></a>
   				  <h2>Bus Stop: {{stop}}</h2>
   				  <ul>
   				    {{# buses:i}}

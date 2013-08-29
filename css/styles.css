@@ -16,7 +16,12 @@
 }
 
 .bus-stop-app h2 {
-  margin-bottom: 1em;
+  margin-bottom: .5em;
+}
+
+.bus-stop-app .actions {
+  margin-bottom: .5em;
+  text-align: center;
 }
 
 .bus-stop-app ul,
@@ -39,5 +44,14 @@
 
 .bus-stop-app ul li.highlight {
   background-color: yellow;
-  
+}
+
+.bus-stop-app a.geolocate-stop {
+  background: transparent url('http://icons.iconarchive.com/icons/visualpharm/icons8-metro-style/512/Maps-and-Geolocation-Worldwide-location-icon.png') center center no-repeat;
+  background-size: contain;
+  width: 1.5em;
+  height: 1.5em;
+  color: transparent;
+  display: block;
+  float: right;
 }
