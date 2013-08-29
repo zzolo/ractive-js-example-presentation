@@ -39,7 +39,7 @@
 	// Event poll for bustop API
 	function pollBusStopAPI() {
   	var jsonpTemplate = 'http://svc.metrotransit.org/NexTrip/[[BUSSTOP]]?format=json&callback=?';
-  	var interval = 2000;
+  	var interval = 3000;
   	var poolID;
   	
   	var parseData = function(data) {
@@ -169,7 +169,7 @@
 	  });
 	  
 	  $(window).on('bus', function(e, data) {
-	    ractiveView.set('buses', _.first(data.buses, 3));
+	    ractiveView.set('buses', _.first(data.buses, 5));
 	  });
 	};
 	
@@ -205,7 +205,7 @@
 	  });
 	  
 	  $(window).on('bus', function(e, data) {
-	    ractiveView.set('buses', _.first(data.buses, 3));
+	    ractiveView.set('buses', _.first(data.buses, 5));
 	  });
 	  
 	  ractiveView.observe('stop', function(e) {
@@ -230,7 +230,7 @@
 	  });
 	  
 	  $(window).on('bus', function(e, data) {
-	    ractiveView.set('buses', _.first(data.buses, 3));
+	    ractiveView.set('buses', _.first(data.buses, 5));
 	  });
 	  
 	  ractiveView.on('highlight', function(e) {
@@ -252,7 +252,7 @@
 	  });
 	  
 	  $(window).on('bus', function(e, data) {
-	    ractiveView.set('buses', _.first(data.buses, 3));
+	    ractiveView.set('buses', _.first(data.buses, 5));
 	  });
 	  
 	  ractiveView.observe('stop', function(e) {
@@ -286,7 +286,7 @@
 	  });
 	  
 	  $(window).on('bus', function(e, data) {
-	    ractiveView.set('buses', _.first(data.buses, 3));
+	    ractiveView.set('buses', _.first(data.buses, 5));
 	  });
 	  
 	  ractiveView.observe('stop', function(e) {
@@ -305,6 +305,121 @@
 	    });
 	  });
 	};
+	
+	// Step 8
+	outputHandlers.step08 = function($el, template) {
+	  busStop = '43275';
+	
+	  var ractiveView = new Ractive({
+  	  el: $el,
+  	  template: template,
+  	  data: {
+    	  stop: busStop,
+    	  buses: [],
+    	  formatTime: function(moment, format) {
+    	    format = format || 'h:mm A';
+      	  return moment.format(format);
+    	  }
+  	  }
+	  });
+	  
+	  $(window).on('bus', function(e, data) {
+	    ractiveView.set('buses', _.first(data.buses, 5));
+	  });
+	  
+	  ractiveView.observe('stop', function(e) {
+	    busStop = this.get('stop');
+	    poller.update();
+	  });
+	  
+	  ractiveView.on('highlight', function(e) {
+	    $(e.original.target).toggleClass('highlight');
+	  });
+	  
+	  ractiveView.on('closest', function(e) {
+	    e.original.preventDefault();
+	    getClosestStop(function(stop) {
+  	     ractiveView.set('stop', stop);
+	    });
+	  });
+	};
+	
+	// Step 9
+	outputHandlers.step09 = function($el, template) {
+	  busStop = '43275';
+	
+	  var ractiveView = new Ractive({
+  	  el: $el,
+  	  template: template,
+  	  data: {
+    	  stop: busStop,
+    	  buses: [],
+    	  formatTime: function(moment, format) {
+    	    format = format || 'h:mm A';
+      	  return moment.format(format);
+    	  }
+  	  }
+	  });
+	  
+	  $(window).on('bus', function(e, data) {
+	    ractiveView.set('buses', _.first(data.buses, 5));
+	  });
+	  
+	  ractiveView.observe('stop', function(e) {
+	    busStop = this.get('stop');
+	    poller.update();
+	  });
+	  
+	  ractiveView.on('highlight', function(e) {
+	    $(e.original.target).toggleClass('highlight');
+	  });
+	  
+	  ractiveView.on('closest', function(e) {
+	    e.original.preventDefault();
+	    getClosestStop(function(stop) {
+  	     ractiveView.set('stop', stop);
+	    });
+	  });
+	};
+	
+	// Step 10
+	outputHandlers.step10 = function($el, template) {
+	  busStop = '43275';
+	
+	  var ractiveView = new Ractive({
+  	  el: $el,
+  	  template: template,
+  	  data: {
+    	  stop: busStop,
+    	  buses: [],
+    	  formatTime: function(moment, format) {
+    	    format = format || 'h:mm A';
+      	  return moment.format(format);
+    	  }
+  	  }
+	  });
+	  
+	  $(window).on('bus', function(e, data) {
+	    ractiveView.set('buses', _.first(data.buses, 5));
+	  });
+	  
+	  ractiveView.observe('stop', function(e) {
+	    busStop = this.get('stop');
+	    poller.update();
+	  });
+	  
+	  ractiveView.on('highlight', function(e) {
+	    $(e.original.target).toggleClass('highlight');
+	  });
+	  
+	  ractiveView.on('closest', function(e) {
+	    e.original.preventDefault();
+	    getClosestStop(function(stop) {
+  	     ractiveView.set('stop', stop);
+	    });
+	  });
+	};
+
 	
 	// Event listening to run code in a slide
 	Reveal.addEventListener('slidechanged', outputSlideHanderler);

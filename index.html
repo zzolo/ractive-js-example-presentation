@@ -158,7 +158,11 @@ var ractiveView = new Ractive({
 				
 				
 				<section>
-					<h2>Styles, <a href="https://github.com/janl/mustache.js/">Mustache</a>, and Pooling</h2>
+					<h2>Styles, <a href="https://github.com/janl/mustache.js/">Mustache</a>, and Polling</h2>
+				</section>
+				
+				<section>
+					<h3>Mustache</h3>
 				</section>
 				
 				<section>
@@ -175,6 +179,10 @@ var ractiveView = new Ractive({
   {{/ buses}}
 &lt;/ul&gt;
 					</code></pre>
+				</section>
+				
+				<section>
+					<h3>Poll data</h3>
 				</section>
 				
 				<section>
@@ -238,6 +246,10 @@ var ractiveView = new Ractive({
 buses.c = 4;
 ractiveView.update('buses');
 					</code></pre>
+				</section>
+				
+				<section>
+					<h3><a href="https://github.com/Rich-Harris/Ractive/wiki/Array-modification">Array modifications</a></h3>
 				</section>
 				
 				<section>
@@ -331,6 +343,10 @@ ractiveView.set('stop', '17982');
 				</section>
 				
 				<section>
+					<h3>Highlighting with Hover</h3>
+				</section>
+				
+				<section>
 					<pre><code data-trim class="html">
 &lt;h2&gt;Bus Stop: {{stop}}&lt;/h2&gt;
 &lt;ul&gt;
@@ -374,6 +390,10 @@ ractiveView.on('highlight', function(e) {
   				  </ul>
 				  </div>
 				</script>
+				
+				<section>
+					<h3>Geolocate with Tap</h3>
+				</section>
 				
 				<section>
 					<pre><code data-trim class="html">
@@ -463,6 +483,167 @@ ractiveView.on('closest', function(e) {
   				          {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
   				        {{/ Actual}}
   				        {{^ Actual}} arrives at {{DepartureText}}{{/ Actual}}
+  				      </li>
+  				    {{/ buses}}
+  				  </ul>
+				  </div>
+				</script>
+				
+				
+				
+				<!-- =========================================== -->
+				
+				
+				<section>
+					<h2>Formatters</h2>
+				</section>
+				
+				<section>
+					<pre><code data-trim class="javascript">
+var ractiveView = new Ractive({
+  el: $el,
+  template: template,
+  data: {
+    stop: busStop,
+    buses: [],
+    formatTime: function(moment, format) {
+      format = format || 'h:mm A';
+      return moment.format(format);
+    }
+  }
+});
+					</code></pre>
+				</section>
+				
+				<section>
+					<pre><code data-trim class="html">
+&lt;ul&gt;
+  {{# buses:i}}
+    &lt;li on-hover=&quot;highlight&quot;&gt;{{Route}}{{Terminal}}
+      {{# Actual}}
+        {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
+      {{/ Actual}}
+      {{^ Actual}} arrives at {{formatTime(time)}}{{/ Actual}}
+    &lt;/li&gt;
+  {{/ buses}}
+&lt;/ul&gt;
+					</code></pre>
+				</section>
+				
+				<section>
+					<div class="output" data-output-handler="step08">
+					</div>
+				</section>
+				
+				<script type="text/template" id="output-template-step08">
+				  <div class="bus-stop-app">
+				    <a href="#" on-tap="closest" class="geolocate-stop" title="Find closest stop"></a>
+  				  <h2>Bus Stop: {{stop}}</h2>
+  				  <div class="actions">
+  				    <label>Update stop:</label> <input type="text" value="{{stop}}" />
+  				  </div>
+  				  <ul>
+  				    {{# buses:i}}
+  				      <li on-hover="highlight">{{Route}}{{Terminal}}
+  				        {{# Actual}}
+  				          {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
+  				        {{/ Actual}}
+  				        {{^ Actual}} arrives at {{formatTime(time)}}{{/ Actual}}
+  				      </li>
+  				    {{/ buses}}
+  				  </ul>
+				  </div>
+				</script>
+				
+				
+				
+				<!-- =========================================== -->
+				
+				
+				<section>
+					<h2>Transitions</h2>
+				</section>
+				
+				<section>
+					<pre><code data-trim class="html">
+&lt;ul&gt;
+  {{# buses:i}}
+    &lt;li on-hover=&quot;highlight&quot; intro=&quot;slide&quot;&gt;{{Route}}{{Terminal}}
+      {{# Actual}}
+        {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
+      {{/ Actual}}
+      {{^ Actual}} arrives at {{formatTime(time)}}{{/ Actual}}
+    &lt;/li&gt;
+  {{/ buses}}
+&lt;/ul&gt;
+					</code></pre>
+				</section>
+				
+				<section>
+					<div class="output" data-output-handler="step09">
+					</div>
+				</section>
+				
+				<script type="text/template" id="output-template-step09">
+				  <div class="bus-stop-app">
+				    <a href="#" on-tap="closest" class="geolocate-stop" title="Find closest stop"></a>
+  				  <h2>Bus Stop: {{stop}}</h2>
+  				  <div class="actions">
+  				    <label>Update stop:</label> <input type="text" value="{{stop}}" />
+  				  </div>
+  				  <ul>
+  				    {{# buses:i}}
+  				      <li on-hover="highlight" intro="slide">{{Route}}{{Terminal}}
+  				        {{# Actual}}
+  				          {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
+  				        {{/ Actual}}
+  				        {{^ Actual}} arrives at {{formatTime(time)}}{{/ Actual}}
+  				      </li>
+  				    {{/ buses}}
+  				  </ul>
+				  </div>
+				</script>
+				
+				
+				
+				<!-- =========================================== -->
+				
+				
+				<section>
+					<h2>Animations</h2>
+				</section>
+				
+				<section>
+					<pre><code data-trim class="html">
+
+					</code></pre>
+				</section>
+				
+				<section>
+					<pre><code data-trim class="javascript">
+
+					</code></pre>
+				</section>
+				
+				<section>
+					<div class="output" data-output-handler="step10">
+					</div>
+				</section>
+				
+				<script type="text/template" id="output-template-step10">
+				  <div class="bus-stop-app">
+				    <a href="#" on-tap="closest" class="geolocate-stop" title="Find closest stop"></a>
+  				  <h2>Bus Stop: {{stop}}</h2>
+  				  <div class="actions">
+  				    <label>Update stop:</label> <input type="text" value="{{stop}}" />
+  				  </div>
+  				  <ul>
+  				    {{# buses:i}}
+  				      <li on-hover="highlight" intro="slide">{{Route}}{{Terminal}}
+  				        {{# Actual}}
+  				          {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
+  				        {{/ Actual}}
+  				        {{^ Actual}} arrives at {{formatTime(time)}}{{/ Actual}}
   				      </li>
   				    {{/ buses}}
   				  </ul>
