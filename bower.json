@@ -1,0 +1,21 @@
+{
+  "name": "ractive-js-example-presentation",
+  "version": "0.0.0",
+  "homepage": "https://github.com/zzolo/ractive-js-example-presentation",
+  "authors": [
+    "Alan Palazzolo <apalazzolo@minnpost.com>"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "ractive": "~0.3.6",
+    "reveal.js": "https://github.com/hakimel/reveal.js.git#~2.5.0"
+  }
+}
