@@ -12,3 +12,25 @@
   border: 1px dashed #DCDCDC;
   padding: 1em;
 }
+
+.bus-stop-app h2 {
+  margin-bottom: 1em;
+}
+
+.bus-stop-app ul,
+.bus-stop-app ul li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 95%;
+}
+
+.bus-stop-app ul {
+  margin-bottom: 1em;
+}
+
+.bus-stop-app ul li {
+  margin-bottom: .5em;
+  background-color: #DCDCDC;
+  padding: .25em .5em;
+}

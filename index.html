@@ -67,33 +67,153 @@
 				</section>
 				
 				<section>
-					<div class="output" data-output-handler="final">
-					  TEST
-					</div>
+					<h2>Data</h2>
+				</section>
+
+				<section>
+				  <a href="http://svc.metrotransit.org/NexTrip/43275?format=json">http://svc.metrotransit.org/NexTrip/43275?format=json</a>
+				</section>
+
+				<section>
+					<pre><code data-trim class="javascript">
+[
+  {
+  "Actual": true,
+  "BlockNumber": 1122,
+  "DepartureText": "3 Min",
+  "DepartureTime": "/Date(1377800220000-0500)/",
+  "Description": "Emerson/26Av-Broadway",
+  "Gate": "",
+  "Route": "5",
+  "RouteDirection": "NORTHBOUND",
+  "Terminal": "F",
+  "VehicleHeading": 0,
+  "VehicleLatitude": 44.9888311,
+  "VehicleLongitude": -93.2898608
+  },
+  ...
+]
+					</code></pre>
+				</section>
+				
+				
+				
+				<!-- =========================================== -->
+				
+				
+				
+				
+				<section>
+					<h2>Basic Template and Render</h2>
+				</section>
+
+				<section>
+					<pre><code data-trim class="html">
+&lt;h2&gt;Bus Stop: {{stop}}&lt;/h2&gt;
+&lt;ul&gt;
+  {{# buses:i}}
+    &lt;li&gt;{{Route}}{{Terminal}} in {{DepartureText}}.&lt;/li&gt;
+  {{/ buses}}
+&lt;/ul&gt;
+					</code></pre>
+				</section>
+
+				<section>
+					<pre><code data-trim class="javascript">
+var $el = $('.container-output');
+var template = $('#template-id');
+					</code></pre>
+				</section>
+
+				<section>
+					<pre><code data-trim class="javascript">
+var ractiveView = new Ractive({
+  el: $el,
+  template: template,
+  data: {
+    stop: busStop,
+    buses: [ .. ]
+  }
+});
+					</code></pre>
 				</section>
 				
 				<section>
-					<h2>Template</h2>
+					<div class="output" data-output-handler="step01">
+					</div>
 				</section>
-
+				
+				<script type="text/template" id="output-template-step01">
+				  <h2>Bus Stop: {{stop}}</h2>
+				  <ul>
+				    {{# buses:i}}
+				      <li>{{Route}}{{Terminal}} in {{DepartureText}}.</li>
+				    {{/ buses}}
+				  </ul>
+				</script>
+				
+				
+				
+				<!-- =========================================== -->
+				
+				
 				<section>
-					<pre><code data-trim>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) ) {
-        node.className += ' roll';
-      }
-    };
-  }
-}
+					<h2>Styles, <a href="https://github.com/janl/mustache.js/">Mustache</a>, and Pooling</h2>
+				</section>
+				
+				<section>
+					<pre><code data-trim class="html">
+&lt;h2&gt;Bus Stop: {{stop}}&lt;/h2&gt;
+&lt;ul&gt;
+  {{# buses:i}}
+    &lt;li&gt;{{Route}}{{Terminal}}
+      {{# Actual}}
+        {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
+      {{/ Actual}}
+      {{^ Actual}} arrives at {{DepartureText}}{{/ Actual}}.
+    &lt;/li&gt;
+  {{/ buses}}
+&lt;/ul&gt;
 					</code></pre>
 				</section>
+				
+				<section>
+					<pre><code data-trim class="javascript">
+var ractiveView = new Ractive({
+  el: $el,
+  template: template,
+  data: {
+    stop: busStop,
+    buses: []
+  }
+});
+
+onBusUpdate(function(data) {
+  ractiveView.set('buses', data);
+});
+					</code></pre>
+				</section>
+				
+				<section>
+					<div class="output" data-output-handler="step02">
+					</div>
+				</section>
+				
+				<script type="text/template" id="output-template-step02">
+				  <div class="bus-stop-app">
+  				  <h2>Bus Stop: {{stop}}</h2>
+  				  <ul>
+  				    {{# buses:i}}
+  				      <li>{{Route}}{{Terminal}}
+  				        {{# Actual}}
+  				          {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
+  				        {{/ Actual}}
+  				        {{^ Actual}} arrives at {{DepartureText}}{{/ Actual}}
+  				      </li>
+  				    {{/ buses}}
+  				  </ul>
+				  </div>
+				</script>
 
 			</div>
 		</div>
@@ -103,6 +223,7 @@ function linkify( selector ) {
 		<script src="bower_components/ractive/build/Ractive.min.js"></script>
 		<script src="bower_components/jquery/jquery.min.js"></script>
 		<script src="bower_components/underscore/underscore-min.js"></script>
+		<script src="bower_components/momentjs/min/moment.min.js"></script>
 		<script src="js/app.js"></script>
 
 	</body>

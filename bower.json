@@ -16,6 +16,10 @@
   ],
   "dependencies": {
     "ractive": "~0.3.6",
-    "reveal.js": "https://github.com/hakimel/reveal.js.git#~2.5.0"
+    "reveal.js": "https://github.com/hakimel/reveal.js.git#~2.5.0",
+    "momentjs": "~2.1.0",
+    "underscore": "~1.5.1",
+    "jquery": "~2.0.3",
+    "highlight.js": "~7.3.0"
   }
 }
