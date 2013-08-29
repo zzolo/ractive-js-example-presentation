@@ -6,6 +6,7 @@
   font-size: 1.5em;
   line-height: 1.25em;
   max-height: none;
+  padding: 1em;
 }
 
 .reveal .output {
@@ -34,4 +35,9 @@
   margin-bottom: .5em;
   background-color: #DCDCDC;
   padding: .25em .5em;
+}
+
+.bus-stop-app ul li.highlight {
+  background-color: yellow;
+  
 }

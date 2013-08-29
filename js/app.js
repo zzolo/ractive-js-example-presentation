@@ -153,6 +153,26 @@
 	  });
 	};
 	
+	// Step 4
+	outputHandlers.step04 = function($el, template) {
+	  var ractiveView = new Ractive({
+  	  el: $el,
+  	  template: template,
+  	  data: {
+    	  stop: busStop,
+    	  buses: []
+  	  }
+	  });
+	  
+	  $(window).on('bus', function(e, data) {
+	    ractiveView.set('buses', _.first(data.buses, 3));
+	  });
+	  
+	  ractiveView.on('highlight', function(e) {
+	    $(e.original.target).toggleClass('highlight');
+	  });
+	};
+	
 	// Event listening to run code in a slide
 	Reveal.addEventListener('slidechanged', outputSlideHanderler);
 	Reveal.addEventListener('ready', outputSlideHanderler);
