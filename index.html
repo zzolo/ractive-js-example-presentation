@@ -15,12 +15,15 @@
 		<link rel="stylesheet" href="bower_components/reveal.js/css/theme/simple.css" id="theme">
 
 		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css">
+		<!-- <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css"> -->
+		<link rel="stylesheet" href="bower_components/highlight.js/src/styles/sunburst.css">
 
 		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 		<script>
 			document.write( '<link rel="stylesheet" href="bower_components/reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 		</script>
+		
+		<link rel="stylesheet" href="css/styles.css">
 
 		<!--[if lt IE 9]>
 		  <script src="bower_components/reveal.js/lib/js/html5shiv.js"></script>
@@ -41,7 +44,7 @@
 				</section>
 
 				<section>
-					<pre><code data-trim contenteditable>
+					<pre><code data-trim>
 function linkify( selector ) {
   if( supports3DTransforms ) {
 
@@ -64,28 +67,10 @@ function linkify( selector ) {
 
 		<script src="bower_components/reveal.js/lib/js/head.min.js"></script>
 		<script src="bower_components/reveal.js/js/reveal.min.js"></script>
-
-		<script>
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: false,
-				progress: true,
-				history: true,
-				center: true,
-
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
-
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'bower_components/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
-		</script>
+		<script src="bower_components/ractive/build/Ractive.min.js"></script>
+		<script src="bower_components/jquery/jquery.min.js"></script>
+		<script src="bower_components/underscore/underscore-min.js"></script>
+		<script src="js/app.js"></script>
 
 	</body>
 </html>
