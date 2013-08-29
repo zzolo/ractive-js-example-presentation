@@ -214,6 +214,71 @@ onBusUpdate(function(data) {
   				  </ul>
 				  </div>
 				</script>
+				
+				
+				
+				<!-- =========================================== -->
+				
+				
+				<section>
+					<h2>Data Updates</h2>
+				</section>
+				
+				<section>
+					<pre><code data-trim class="javascript">
+var buses = { a: 1, b: 2 };
+var ractiveView = new Ractive({
+  el: $el,
+  template: template,
+  data: {
+    stop: busStop,
+    buses: buses
+  }
+});
+buses.c = 4;
+ractiveView.update('buses');
+					</code></pre>
+				</section>
+				
+				<section>
+					<pre><code data-trim class="javascript">
+var buses = [];
+var count = 0;
+var ractiveView = new Ractive({
+  el: $el,
+  template: template,
+  data: {
+    stop: busStop,
+    buses: buses
+  }
+});
+
+onBusUpdate(function(data) {
+  buses.push(data[count++]);
+});
+					</code></pre>
+				</section>
+				
+				<section>
+					<div class="output" data-output-handler="step03">
+					</div>
+				</section>
+				
+				<script type="text/template" id="output-template-step03">
+				  <div class="bus-stop-app">
+  				  <h2>Bus Stop: {{stop}}</h2>
+  				  <ul>
+  				    {{# buses:i}}
+  				      <li>{{Route}}{{Terminal}}
+  				        {{# Actual}}
+  				          {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
+  				        {{/ Actual}}
+  				        {{^ Actual}} arrives at {{DepartureText}}{{/ Actual}}
+  				      </li>
+  				    {{/ buses}}
+  				  </ul>
+				  </div>
+				</script>
 
 			</div>
 		</div>

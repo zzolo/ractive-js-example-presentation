@@ -119,7 +119,7 @@
 	  });
 	};
 	
-	// Step 1
+	// Step 2
 	outputHandlers.step02 = function($el, template) {
 	  var ractiveView = new Ractive({
   	  el: $el,
@@ -132,6 +132,24 @@
 	  
 	  $(window).on('bus', function(e, data) {
 	    ractiveView.set('buses', _.first(data.buses, 3));
+	  });
+	};
+	
+	// Step 3
+	outputHandlers.step03 = function($el, template) {
+	  var buses = [];
+	  var count = 0;
+	  var ractiveView = new Ractive({
+  	  el: $el,
+  	  template: template,
+  	  data: {
+    	  stop: busStop,
+    	  buses: buses
+  	  }
+	  });
+	  
+	  $(window).on('bus', function(e, data) {
+	    buses.push(data.buses[count++]);
 	  });
 	};
 	

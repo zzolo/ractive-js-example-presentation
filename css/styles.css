@@ -11,6 +11,7 @@
 .reveal .output {
   border: 1px dashed #DCDCDC;
   padding: 1em;
+  min-height: 300px;
 }
 
 .bus-stop-app h2 {
