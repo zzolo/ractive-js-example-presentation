@@ -55,3 +55,14 @@
   display: block;
   float: right;
 }
+
+
+.bus-stop-app label {
+  font-size: .85em;
+}
+
+.bus-stop-app input[type=text] {
+  font-size: .85em;
+  padding: .25em .5em;
+  border: 1px solid #DCDCDC;
+}

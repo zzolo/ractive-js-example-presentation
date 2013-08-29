@@ -424,6 +424,50 @@ ractiveView.on('closest', function(e) {
   				  </ul>
 				  </div>
 				</script>
+				
+				
+				
+				<!-- =========================================== -->
+				
+				
+				<section>
+					<h2>Input</h2>
+				</section>
+				
+				<section>
+					<pre><code data-trim class="html">
+&lt;a href=&quot;#&quot; on-tap=&quot;closest&quot; class=&quot;geolocate-stop&quot; title=&quot;Find closest stop&quot;&gt;&lt;/a&gt;
+&lt;h2&gt;Bus Stop: {{stop}}&lt;/h2&gt;
+&lt;div class=&quot;actions&quot;&gt;
+  &lt;label&gt;Update stop:&lt;/label&gt; &lt;input type=&quot;text&quot; value=&quot;{{stop}}&quot; /&gt;
+&lt;/div&gt;
+					</code></pre>
+				</section>
+				
+				<section>
+					<div class="output" data-output-handler="step07">
+					</div>
+				</section>
+				
+				<script type="text/template" id="output-template-step07">
+				  <div class="bus-stop-app">
+				    <a href="#" on-tap="closest" class="geolocate-stop" title="Find closest stop"></a>
+  				  <h2>Bus Stop: {{stop}}</h2>
+  				  <div class="actions">
+  				    <label>Update stop:</label> <input type="text" value="{{stop}}" />
+  				  </div>
+  				  <ul>
+  				    {{# buses:i}}
+  				      <li on-hover="highlight">{{Route}}{{Terminal}}
+  				        {{# Actual}}
+  				          {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
+  				        {{/ Actual}}
+  				        {{^ Actual}} arrives at {{DepartureText}}{{/ Actual}}
+  				      </li>
+  				    {{/ buses}}
+  				  </ul>
+				  </div>
+				</script>
 
 			</div>
 		</div>

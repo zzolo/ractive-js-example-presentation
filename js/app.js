@@ -272,6 +272,40 @@
 	  });
 	};
 	
+	// Step 7
+	outputHandlers.step07 = function($el, template) {
+	  busStop = '43275';
+	
+	  var ractiveView = new Ractive({
+  	  el: $el,
+  	  template: template,
+  	  data: {
+    	  stop: busStop,
+    	  buses: []
+  	  }
+	  });
+	  
+	  $(window).on('bus', function(e, data) {
+	    ractiveView.set('buses', _.first(data.buses, 3));
+	  });
+	  
+	  ractiveView.observe('stop', function(e) {
+	    busStop = this.get('stop');
+	    poller.update();
+	  });
+	  
+	  ractiveView.on('highlight', function(e) {
+	    $(e.original.target).toggleClass('highlight');
+	  });
+	  
+	  ractiveView.on('closest', function(e) {
+	    e.original.preventDefault();
+	    getClosestStop(function(stop) {
+  	     ractiveView.set('stop', stop);
+	    });
+	  });
+	};
+	
 	// Event listening to run code in a slide
 	Reveal.addEventListener('slidechanged', outputSlideHanderler);
 	Reveal.addEventListener('ready', outputSlideHanderler);
