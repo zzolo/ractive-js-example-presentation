@@ -7,3 +7,8 @@
   line-height: 1.25em;
   max-height: none;
 }
+
+.reveal .output {
+  border: 1px dashed #DCDCDC;
+  padding: 1em;
+}
