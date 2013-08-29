@@ -42,10 +42,15 @@
   	var interval = 3000;
   	var poolID;
   	
+  	var colorScale = chroma.scale(['#FF0040', '#40FF00'].reverse()).mode('hsl').domain([0, 20]);
+  	
   	var parseData = function(data) {
       data = _.map(data, function(s) {
         // /Date(1370124480000-0500)/ (This can't be right)
         s.time = moment(eval(s.DepartureTime.substring(6, s.DepartureTime.length - 2)));
+        s.now = moment();
+        s.minutes = moment.duration(s.time.diff(s.now)).minutes();
+        s.bgColor = colorScale(s.minutes).hex();
         return s
       });
       data = _.sortBy(data, function(s) { return s.time.unix(); });
@@ -66,7 +71,8 @@
       },
       update: function() {
         getData();
-      }
+      },
+      colorScale: colorScale
     }
 	}
 	poller = new pollBusStopAPI();

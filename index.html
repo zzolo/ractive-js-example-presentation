@@ -63,7 +63,18 @@
 				</section>
 				
 				<section>
+				  <h3>AngularJS</h3>
+				  <h3>Ember</h3>
+				  <h3>Backbone(.stickit)</h3>
+				</section>
+				
+				<section>
 					<h2>Bus Stop</h2>
+				</section>
+				
+				<section>
+					<div class="output" data-output-handler="step10">
+					</div>
 				</section>
 				
 				<section>
@@ -639,7 +650,7 @@ var ractiveView = new Ractive({
   				  </div>
   				  <ul>
   				    {{# buses:i}}
-  				      <li on-hover="highlight" intro="slide">{{Route}}{{Terminal}}
+  				      <li style="background-color: {{bgColor}};" on-hover="highlight" intro="slide">{{Route}}{{Terminal}}
   				        {{# Actual}}
   				          {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
   				        {{/ Actual}}
@@ -659,6 +670,7 @@ var ractiveView = new Ractive({
 		<script src="bower_components/jquery/jquery.min.js"></script>
 		<script src="bower_components/underscore/underscore-min.js"></script>
 		<script src="bower_components/momentjs/min/moment.min.js"></script>
+		<script src="bower_components/chroma-js/chroma.min.js"></script>
 		<script src="js/app.js"></script>
 
 	</body>

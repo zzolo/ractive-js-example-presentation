@@ -20,6 +20,7 @@
     "momentjs": "~2.1.0",
     "underscore": "~1.5.1",
     "jquery": "~2.0.3",
-    "highlight.js": "~7.3.0"
+    "highlight.js": "~7.3.0",
+    "chroma-js": "~0.4.8"
   }
 }

@@ -1,0 +1,15 @@
+{
+  "name": "chroma-js",
+  "homepage": "https://github.com/gka/chroma.js",
+  "version": "0.4.8",
+  "_release": "0.4.8",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.4.8",
+    "commit": "e735b8eca3e7a03a8a0916c3c6584a5bb09814b9"
+  },
+  "_source": "git://github.com/gka/chroma.js.git",
+  "_target": "~0.4.8",
+  "_originalSource": "chroma-js",
+  "_direct": true
+}
