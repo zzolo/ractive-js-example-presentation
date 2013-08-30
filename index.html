@@ -626,13 +626,25 @@ var ractiveView = new Ractive({
 				
 				<section>
 					<pre><code data-trim class="html">
-
+ractiveView.observe('buses', function(oldV, newV) {
+  _.each(newV, function(b, i) {
+    var path = 'buses.' + i + '.minutes';
+  
+    ractiveView.animate(path, b.minutes, {
+	    duration: 1000,
+	    step: function(t, value) {
+	      ractiveView.set(path, poller.colorScale(value).hex());
+  	    return value;
+	    },
+    });
+  });
+});
 					</code></pre>
 				</section>
 				
 				<section>
 					<pre><code data-trim class="javascript">
-
+console.log('FAIL');
 					</code></pre>
 				</section>
 				

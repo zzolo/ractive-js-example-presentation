@@ -398,6 +398,7 @@
   	  data: {
     	  stop: busStop,
     	  buses: [],
+    	  bg: [],
     	  formatTime: function(moment, format) {
     	    format = format || 'h:mm A';
       	  return moment.format(format);
@@ -413,6 +414,26 @@
 	    busStop = this.get('stop');
 	    poller.update();
 	  });
+	  
+	  /*
+	  // Want to animate buses[x].bgColor
+	  // which is based on buses[x].bgColor
+	  // but how to animate it but, not have it
+	  // update on the set
+	  ractiveView.observe('buses', function(oldV, newV) {
+	    _.each(newV, function(b, i) {
+	      var path = 'bg.' + i;
+	    
+  	    ractiveView.animate(path, b.minutes, {
+    	    duration: 1000,
+    	    step: function(t, value) {
+    	      ractiveView.set(path, poller.colorScale(value).hex());
+      	    return value;
+    	    },
+  	    });
+	    });
+	  });
+	  */
 	  
 	  ractiveView.on('highlight', function(e) {
 	    $(e.original.target).toggleClass('highlight');
