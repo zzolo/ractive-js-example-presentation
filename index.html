@@ -1,92 +1,92 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
 
-		<title>Ractive.js | by example</title>
+    <title>Ractive.js | by example</title>
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="bower_components/reveal.js/css/reveal.min.css">
-		<link rel="stylesheet" href="bower_components/reveal.js/css/theme/simple.css" id="theme">
+    <link rel="stylesheet" href="bower_components/reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="bower_components/reveal.js/css/theme/simple.css" id="theme">
 
-		<!-- For syntax highlighting -->
-		<!-- <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css"> -->
-		<link rel="stylesheet" href="bower_components/highlight.js/src/styles/sunburst.css">
+    <!-- For syntax highlighting -->
+    <!-- <link rel="stylesheet" href="bower_components/reveal.js/lib/css/zenburn.css"> -->
+    <link rel="stylesheet" href="bower_components/highlight.js/src/styles/sunburst.css">
 
-		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
-		<script>
-			document.write( '<link rel="stylesheet" href="bower_components/reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-		</script>
-		
-		<link rel="stylesheet" href="css/styles.css">
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="bower_components/reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+    
+    <link rel="stylesheet" href="css/styles.css">
 
-		<!--[if lt IE 9]>
-		  <script src="bower_components/reveal.js/lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
+    <!--[if lt IE 9]>
+      <script src="bower_components/reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
 
-	<body>
-		<div class="reveal">
+  <body>
+    <div class="reveal">
 
-			<div class="slides">
-				<section>
-					<h1>Ractive.js</h1>
-					<h3>by example</h3>
-					<p>
-					  <br><br><br>
-						<small>Created by Alan Pala<a href="//zzolo.org">zzolo</a></small>
-					</p>
-				</section>
-				
-				<section>
-				  <h3><a href="http://www.ractivejs.org/">ractivejs.org</a> <br><br></h3>
-				  <h3><a href="http://zzolo.org/ractive-js-example-presentation/">zzolo.org/ractive-js-example-presentation</a></h3>
-				</section>
-				
-				<section>
-					<h2>What is Ractive.js?</h2>
-				</section>
-				
-				<section>
-				  <h3>Data binding,</h3>
-				  <h3>DOM updates,</h3>
-				  <h3>Event handling</h3>
-				</section>
-				
-				<section>
-				  <h3>Model-<strong>View</strong>-<em>Controller</em></h3>
-				</section>
-				
-				<section>
-				  <h3>AngularJS</h3>
-				  <h3>Ember</h3>
-				  <h3>Backbone(.stickit)</h3>
-				</section>
-				
-				<section>
-					<h2>Bus Stop</h2>
-				</section>
-				
-				<section>
-					<div class="output" data-output-handler="step10">
-					</div>
-				</section>
-				
-				<section>
-					<h2>Data</h2>
-				</section>
+      <div class="slides">
+        <section>
+          <h1>Ractive.js</h1>
+          <h3>by example</h3>
+          <p>
+            <br><br><br>
+            <small>Created by Alan Pala<a href="//zzolo.org">zzolo</a></small>
+          </p>
+        </section>
+        
+        <section>
+          <h3><a href="http://www.ractivejs.org/">ractivejs.org</a> <br><br></h3>
+          <h3><a href="http://zzolo.org/ractive-js-example-presentation/">zzolo.org/ractive-js-example-presentation</a></h3>
+        </section>
+        
+        <section>
+          <h2>What is Ractive.js?</h2>
+        </section>
+        
+        <section>
+          <h3>Data binding,</h3>
+          <h3>DOM updates,</h3>
+          <h3>Event handling</h3>
+        </section>
+        
+        <section>
+          <h3>Model-<strong>View</strong>-<em>Controller</em></h3>
+        </section>
+        
+        <section>
+          <h3>AngularJS</h3>
+          <h3>Ember</h3>
+          <h3>Backbone(.stickit)</h3>
+        </section>
+        
+        <section>
+          <h2>Bus Stop</h2>
+        </section>
+        
+        <section>
+          <div class="output" data-output-handler="step10">
+          </div>
+        </section>
+        
+        <section>
+          <h2>Data</h2>
+        </section>
 
-				<section>
-				  <a href="http://svc.metrotransit.org/NexTrip/43275?format=json">http://svc.metrotransit.org/NexTrip/43275?format=json</a>
-				</section>
+        <section>
+          <a href="http://svc.metrotransit.org/NexTrip/43275?format=json">http://svc.metrotransit.org/NexTrip/43275?format=json</a>
+        </section>
 
-				<section>
-					<pre><code data-trim class="javascript">
+        <section>
+          <pre><code data-trim class="javascript">
 [
   {
   "Actual": true,
@@ -104,40 +104,40 @@
   },
   ...
 ]
-					</code></pre>
-				</section>
-				
-				
-				
-				<!-- =========================================== -->
-				
-				
-				
-				
-				<section>
-					<h2>Basic Template and Render</h2>
-				</section>
+          </code></pre>
+        </section>
+        
+        
+        
+        <!-- =========================================== -->
+        
+        
+        
+        
+        <section>
+          <h2>Basic Template and Render</h2>
+        </section>
 
-				<section>
-					<pre><code data-trim class="html">
+        <section>
+          <pre><code data-trim class="html">
 &lt;h2&gt;Bus Stop: {{stop}}&lt;/h2&gt;
 &lt;ul&gt;
   {{# buses:i}}
     &lt;li&gt;{{Route}}{{Terminal}} in {{DepartureText}}.&lt;/li&gt;
   {{/ buses}}
 &lt;/ul&gt;
-					</code></pre>
-				</section>
+          </code></pre>
+        </section>
 
-				<section>
-					<pre><code data-trim class="javascript">
+        <section>
+          <pre><code data-trim class="javascript">
 var $el = $('.container-output');
 var template = $('#template-id');
-					</code></pre>
-				</section>
+          </code></pre>
+        </section>
 
-				<section>
-					<pre><code data-trim class="javascript">
+        <section>
+          <pre><code data-trim class="javascript">
 var ractiveView = new Ractive({
   el: $el,
   template: template,
@@ -146,38 +146,38 @@ var ractiveView = new Ractive({
     buses: [ .. ]
   }
 });
-					</code></pre>
-				</section>
-				
-				<section>
-					<div class="output" data-output-handler="step01">
-					</div>
-				</section>
-				
-				<script type="text/template" id="output-template-step01">
-				  <h2>Bus Stop: {{stop}}</h2>
-				  <ul>
-				    {{# buses:i}}
-				      <li>{{Route}}{{Terminal}} in {{DepartureText}}.</li>
-				    {{/ buses}}
-				  </ul>
-				</script>
-				
-				
-				
-				<!-- =========================================== -->
-				
-				
-				<section>
-					<h2>Styles, <a href="https://github.com/janl/mustache.js/">Mustache</a>, and Polling</h2>
-				</section>
-				
-				<section>
-					<h3>Mustache</h3>
-				</section>
-				
-				<section>
-					<pre><code data-trim class="html">
+          </code></pre>
+        </section>
+        
+        <section>
+          <div class="output" data-output-handler="step01">
+          </div>
+        </section>
+        
+        <script type="text/template" id="output-template-step01">
+          <h2>Bus Stop: {{stop}}</h2>
+          <ul>
+            {{# buses:i}}
+              <li>{{Route}}{{Terminal}} in {{DepartureText}}.</li>
+            {{/ buses}}
+          </ul>
+        </script>
+        
+        
+        
+        <!-- =========================================== -->
+        
+        
+        <section>
+          <h2>Styles, <a href="https://github.com/janl/mustache.js/">Mustache</a>, and Polling</h2>
+        </section>
+        
+        <section>
+          <h3>Mustache</h3>
+        </section>
+        
+        <section>
+          <pre><code data-trim class="html">
 &lt;h2&gt;Bus Stop: {{stop}}&lt;/h2&gt;
 &lt;ul&gt;
   {{# buses:i}}
@@ -189,15 +189,15 @@ var ractiveView = new Ractive({
     &lt;/li&gt;
   {{/ buses}}
 &lt;/ul&gt;
-					</code></pre>
-				</section>
-				
-				<section>
-					<h3>Poll data</h3>
-				</section>
-				
-				<section>
-					<pre><code data-trim class="javascript">
+          </code></pre>
+        </section>
+        
+        <section>
+          <h3>Poll data</h3>
+        </section>
+        
+        <section>
+          <pre><code data-trim class="javascript">
 var ractiveView = new Ractive({
   el: $el,
   template: template,
@@ -210,41 +210,41 @@ var ractiveView = new Ractive({
 onBusUpdate(function(data) {
   ractiveView.set('buses', data);
 });
-					</code></pre>
-				</section>
-				
-				<section>
-					<div class="output" data-output-handler="step02">
-					</div>
-				</section>
-				
-				<script type="text/template" id="output-template-step02">
-				  <div class="bus-stop-app">
-  				  <h2>Bus Stop: {{stop}}</h2>
-  				  <ul>
-  				    {{# buses:i}}
-  				      <li>{{Route}}{{Terminal}}
-  				        {{# Actual}}
-  				          {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
-  				        {{/ Actual}}
-  				        {{^ Actual}} arrives at {{DepartureText}}{{/ Actual}}
-  				      </li>
-  				    {{/ buses}}
-  				  </ul>
-				  </div>
-				</script>
-				
-				
-				
-				<!-- =========================================== -->
-				
-				
-				<section>
-					<h2>Data Updates</h2>
-				</section>
-				
-				<section>
-					<pre><code data-trim class="javascript">
+          </code></pre>
+        </section>
+        
+        <section>
+          <div class="output" data-output-handler="step02">
+          </div>
+        </section>
+        
+        <script type="text/template" id="output-template-step02">
+          <div class="bus-stop-app">
+            <h2>Bus Stop: {{stop}}</h2>
+            <ul>
+              {{# buses:i}}
+                <li>{{Route}}{{Terminal}}
+                  {{# Actual}}
+                    {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
+                  {{/ Actual}}
+                  {{^ Actual}} arrives at {{DepartureText}}{{/ Actual}}
+                </li>
+              {{/ buses}}
+            </ul>
+          </div>
+        </script>
+        
+        
+        
+        <!-- =========================================== -->
+        
+        
+        <section>
+          <h2>Data Updates</h2>
+        </section>
+        
+        <section>
+          <pre><code data-trim class="javascript">
 var buses = { a: 1, b: 2 };
 var ractiveView = new Ractive({
   el: $el,
@@ -256,15 +256,15 @@ var ractiveView = new Ractive({
 });
 buses.c = 4;
 ractiveView.update('buses');
-					</code></pre>
-				</section>
-				
-				<section>
-					<h3><a href="https://github.com/Rich-Harris/Ractive/wiki/Array-modification">Array modifications</a></h3>
-				</section>
-				
-				<section>
-					<pre><code data-trim class="javascript">
+          </code></pre>
+        </section>
+        
+        <section>
+          <h3><a href="https://github.com/Rich-Harris/Ractive/wiki/Array-modification">Array modifications</a></h3>
+        </section>
+        
+        <section>
+          <pre><code data-trim class="javascript">
 var buses = [];
 var count = 0;
 var ractiveView = new Ractive({
@@ -279,86 +279,86 @@ var ractiveView = new Ractive({
 onBusUpdate(function(data) {
   buses.push(data[count++]);
 });
-					</code></pre>
-				</section>
-				
-				<section>
-					<div class="output" data-output-handler="step03">
-					</div>
-				</section>
-				
-				<script type="text/template" id="output-template-step03">
-				  <div class="bus-stop-app">
-  				  <h2>Bus Stop: {{stop}}</h2>
-  				  <ul>
-  				    {{# buses:i}}
-  				      <li>{{Route}}{{Terminal}}
-  				        {{# Actual}}
-  				          {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
-  				        {{/ Actual}}
-  				        {{^ Actual}} arrives at {{DepartureText}}{{/ Actual}}
-  				      </li>
-  				    {{/ buses}}
-  				  </ul>
-				  </div>
-				</script>
-				
-				
-				
-				<!-- =========================================== -->
-				
-				
-				<section>
-					<h2>Observe</h2>
-				</section>
-				
-				<section>
-					<pre><code data-trim class="javascript">
+          </code></pre>
+        </section>
+        
+        <section>
+          <div class="output" data-output-handler="step03">
+          </div>
+        </section>
+        
+        <script type="text/template" id="output-template-step03">
+          <div class="bus-stop-app">
+            <h2>Bus Stop: {{stop}}</h2>
+            <ul>
+              {{# buses:i}}
+                <li>{{Route}}{{Terminal}}
+                  {{# Actual}}
+                    {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
+                  {{/ Actual}}
+                  {{^ Actual}} arrives at {{DepartureText}}{{/ Actual}}
+                </li>
+              {{/ buses}}
+            </ul>
+          </div>
+        </script>
+        
+        
+        
+        <!-- =========================================== -->
+        
+        
+        <section>
+          <h2>Observe</h2>
+        </section>
+        
+        <section>
+          <pre><code data-trim class="javascript">
 ractiveView.observe('stop', function(e) {
   busStop = this.get('stop');
   poller.update();
 });
 
 ractiveView.set('stop', '17982');
-					</code></pre>
-				</section>
-				
-				<section>
-					<div class="output" data-output-handler="step04">
-					</div>
-				</section>
-				
-				<script type="text/template" id="output-template-step04">
-				  <div class="bus-stop-app">
-  				  <h2>Bus Stop: {{stop}}</h2>
-  				  <ul>
-  				    {{# buses:i}}
-  				      <li on-hover="highlight">{{Route}}{{Terminal}}
-  				        {{# Actual}}
-  				          {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
-  				        {{/ Actual}}
-  				        {{^ Actual}} arrives at {{DepartureText}}{{/ Actual}}
-  				      </li>
-  				    {{/ buses}}
-  				  </ul>
-				  </div>
-				</script>
-				
-				
-				
-				<!-- =========================================== -->
-				
-				
-				<section>
-					<h2>Events</h2>
-				</section>
-				
-				<section>
-					<h3>Highlighting with Hover</h3>
-				</section>
-				
-				<section>
-					<pre><code data-trim class="html">
+          </code></pre>
+        </section>
+        
+        <section>
+          <div class="output" data-output-handler="step04">
+          </div>
+        </section>
+        
+        <script type="text/template" id="output-template-step04">
+          <div class="bus-stop-app">
+            <h2>Bus Stop: {{stop}}</h2>
+            <ul>
+              {{# buses:i}}
+                <li on-hover="highlight">{{Route}}{{Terminal}}
+                  {{# Actual}}
+                    {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
+                  {{/ Actual}}
+                  {{^ Actual}} arrives at {{DepartureText}}{{/ Actual}}
+                </li>
+              {{/ buses}}
+            </ul>
+          </div>
+        </script>
+        
+        
+        
+        <!-- =========================================== -->
+        
+        
+        <section>
+          <h2>Events</h2>
+        </section>
+        
+        <section>
+          <h3>Highlighting with Hover</h3>
+        </section>
+        
+        <section>
+          <pre><code data-trim class="html">
 &lt;h2&gt;Bus Stop: {{stop}}&lt;/h2&gt;
 &lt;ul&gt;
   {{# buses:i}}
@@ -370,44 +370,44 @@ ractiveView.set('stop', '17982');
     &lt;/li&gt;
   {{/ buses}}
 &lt;/ul&gt;
-					</code></pre>
-				</section>
-				
-				<section>
-					<pre><code data-trim class="javascript">
+          </code></pre>
+        </section>
+        
+        <section>
+          <pre><code data-trim class="javascript">
 ractiveView.on('highlight', function(e) {
   $(e.original.target).toggleClass('highlight');
 });
-					</code></pre>
-				</section>
-				
-				<section>
-					<div class="output" data-output-handler="step05">
-					</div>
-				</section>
-				
-				<script type="text/template" id="output-template-step05">
-				  <div class="bus-stop-app">
-  				  <h2>Bus Stop: {{stop}}</h2>
-  				  <ul>
-  				    {{# buses:i}}
-  				      <li on-hover="highlight">{{Route}}{{Terminal}}
-  				        {{# Actual}}
-  				          {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
-  				        {{/ Actual}}
-  				        {{^ Actual}} arrives at {{DepartureText}}{{/ Actual}}
-  				      </li>
-  				    {{/ buses}}
-  				  </ul>
-				  </div>
-				</script>
-				
-				<section>
-					<h3>Geolocate with Tap</h3>
-				</section>
-				
-				<section>
-					<pre><code data-trim class="html">
+          </code></pre>
+        </section>
+        
+        <section>
+          <div class="output" data-output-handler="step05">
+          </div>
+        </section>
+        
+        <script type="text/template" id="output-template-step05">
+          <div class="bus-stop-app">
+            <h2>Bus Stop: {{stop}}</h2>
+            <ul>
+              {{# buses:i}}
+                <li on-hover="highlight">{{Route}}{{Terminal}}
+                  {{# Actual}}
+                    {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
+                  {{/ Actual}}
+                  {{^ Actual}} arrives at {{DepartureText}}{{/ Actual}}
+                </li>
+              {{/ buses}}
+            </ul>
+          </div>
+        </script>
+        
+        <section>
+          <h3>Geolocate with Tap</h3>
+        </section>
+        
+        <section>
+          <pre><code data-trim class="html">
 &lt;a href=&quot;#&quot; on-tap=&quot;closest&quot; class=&quot;geolocate-stop&quot; title=&quot;Find closest stop&quot;&gt;&lt;/a&gt;
 &lt;h2&gt;Bus Stop: {{stop}}&lt;/h2&gt;
 &lt;ul&gt;
@@ -420,97 +420,97 @@ ractiveView.on('highlight', function(e) {
     &lt;/li&gt;
   {{/ buses}}
 &lt;/ul&gt;
-					</code></pre>
-				</section>
-				
-				<section>
-					<pre><code data-trim class="javascript">
+          </code></pre>
+        </section>
+        
+        <section>
+          <pre><code data-trim class="javascript">
 ractiveView.on('closest', function(e) {
   e.original.preventDefault();
   getClosestStop(function(stop) {
      ractiveView.set('stop', stop);
   });
 });
-					</code></pre>
-				</section>
-				
-				<section>
-					<div class="output" data-output-handler="step06">
-					</div>
-				</section>
-				
-				<script type="text/template" id="output-template-step06">
-				  <div class="bus-stop-app">
-				    <a href="#" on-tap="closest" class="geolocate-stop" title="Find closest stop"></a>
-  				  <h2>Bus Stop: {{stop}}</h2>
-  				  <ul>
-  				    {{# buses:i}}
-  				      <li on-hover="highlight">{{Route}}{{Terminal}}
-  				        {{# Actual}}
-  				          {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
-  				        {{/ Actual}}
-  				        {{^ Actual}} arrives at {{DepartureText}}{{/ Actual}}
-  				      </li>
-  				    {{/ buses}}
-  				  </ul>
-				  </div>
-				</script>
-				
-				
-				
-				<!-- =========================================== -->
-				
-				
-				<section>
-					<h2>Input</h2>
-				</section>
-				
-				<section>
-					<pre><code data-trim class="html">
+          </code></pre>
+        </section>
+        
+        <section>
+          <div class="output" data-output-handler="step06">
+          </div>
+        </section>
+        
+        <script type="text/template" id="output-template-step06">
+          <div class="bus-stop-app">
+            <a href="#" on-tap="closest" class="geolocate-stop" title="Find closest stop"></a>
+            <h2>Bus Stop: {{stop}}</h2>
+            <ul>
+              {{# buses:i}}
+                <li on-hover="highlight">{{Route}}{{Terminal}}
+                  {{# Actual}}
+                    {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
+                  {{/ Actual}}
+                  {{^ Actual}} arrives at {{DepartureText}}{{/ Actual}}
+                </li>
+              {{/ buses}}
+            </ul>
+          </div>
+        </script>
+        
+        
+        
+        <!-- =========================================== -->
+        
+        
+        <section>
+          <h2>Input</h2>
+        </section>
+        
+        <section>
+          <pre><code data-trim class="html">
 &lt;a href=&quot;#&quot; on-tap=&quot;closest&quot; class=&quot;geolocate-stop&quot; title=&quot;Find closest stop&quot;&gt;&lt;/a&gt;
 &lt;h2&gt;Bus Stop: {{stop}}&lt;/h2&gt;
 &lt;div class=&quot;actions&quot;&gt;
   &lt;label&gt;Update stop:&lt;/label&gt; &lt;input type=&quot;text&quot; value=&quot;{{stop}}&quot; /&gt;
 &lt;/div&gt;
-					</code></pre>
-				</section>
-				
-				<section>
-					<div class="output" data-output-handler="step07">
-					</div>
-				</section>
-				
-				<script type="text/template" id="output-template-step07">
-				  <div class="bus-stop-app">
-				    <a href="#" on-tap="closest" class="geolocate-stop" title="Find closest stop"></a>
-  				  <h2>Bus Stop: {{stop}}</h2>
-  				  <div class="actions">
-  				    <label>Update stop:</label> <input type="text" value="{{stop}}" />
-  				  </div>
-  				  <ul>
-  				    {{# buses:i}}
-  				      <li on-hover="highlight">{{Route}}{{Terminal}}
-  				        {{# Actual}}
-  				          {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
-  				        {{/ Actual}}
-  				        {{^ Actual}} arrives at {{DepartureText}}{{/ Actual}}
-  				      </li>
-  				    {{/ buses}}
-  				  </ul>
-				  </div>
-				</script>
-				
-				
-				
-				<!-- =========================================== -->
-				
-				
-				<section>
-					<h2>Formatters</h2>
-				</section>
-				
-				<section>
-					<pre><code data-trim class="javascript">
+          </code></pre>
+        </section>
+        
+        <section>
+          <div class="output" data-output-handler="step07">
+          </div>
+        </section>
+        
+        <script type="text/template" id="output-template-step07">
+          <div class="bus-stop-app">
+            <a href="#" on-tap="closest" class="geolocate-stop" title="Find closest stop"></a>
+            <h2>Bus Stop: {{stop}}</h2>
+            <div class="actions">
+              <label>Update stop:</label> <input type="text" value="{{stop}}" />
+            </div>
+            <ul>
+              {{# buses:i}}
+                <li on-hover="highlight">{{Route}}{{Terminal}}
+                  {{# Actual}}
+                    {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
+                  {{/ Actual}}
+                  {{^ Actual}} arrives at {{DepartureText}}{{/ Actual}}
+                </li>
+              {{/ buses}}
+            </ul>
+          </div>
+        </script>
+        
+        
+        
+        <!-- =========================================== -->
+        
+        
+        <section>
+          <h2>Formatters</h2>
+        </section>
+        
+        <section>
+          <pre><code data-trim class="javascript">
 var ractiveView = new Ractive({
   el: $el,
   template: template,
@@ -523,11 +523,11 @@ var ractiveView = new Ractive({
     }
   }
 });
-					</code></pre>
-				</section>
-				
-				<section>
-					<pre><code data-trim class="html">
+          </code></pre>
+        </section>
+        
+        <section>
+          <pre><code data-trim class="html">
 &lt;ul&gt;
   {{# buses:i}}
     &lt;li on-hover=&quot;highlight&quot;&gt;{{Route}}{{Terminal}}
@@ -538,45 +538,45 @@ var ractiveView = new Ractive({
     &lt;/li&gt;
   {{/ buses}}
 &lt;/ul&gt;
-					</code></pre>
-				</section>
-				
-				<section>
-					<div class="output" data-output-handler="step08">
-					</div>
-				</section>
-				
-				<script type="text/template" id="output-template-step08">
-				  <div class="bus-stop-app">
-				    <a href="#" on-tap="closest" class="geolocate-stop" title="Find closest stop"></a>
-  				  <h2>Bus Stop: {{stop}}</h2>
-  				  <div class="actions">
-  				    <label>Update stop:</label> <input type="text" value="{{stop}}" />
-  				  </div>
-  				  <ul>
-  				    {{# buses:i}}
-  				      <li on-hover="highlight">{{Route}}{{Terminal}}
-  				        {{# Actual}}
-  				          {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
-  				        {{/ Actual}}
-  				        {{^ Actual}} arrives at {{formatTime(time)}}{{/ Actual}}
-  				      </li>
-  				    {{/ buses}}
-  				  </ul>
-				  </div>
-				</script>
-				
-				
-				
-				<!-- =========================================== -->
-				
-				
-				<section>
-					<h2>Transitions</h2>
-				</section>
-				
-				<section>
-					<pre><code data-trim class="html">
+          </code></pre>
+        </section>
+        
+        <section>
+          <div class="output" data-output-handler="step08">
+          </div>
+        </section>
+        
+        <script type="text/template" id="output-template-step08">
+          <div class="bus-stop-app">
+            <a href="#" on-tap="closest" class="geolocate-stop" title="Find closest stop"></a>
+            <h2>Bus Stop: {{stop}}</h2>
+            <div class="actions">
+              <label>Update stop:</label> <input type="text" value="{{stop}}" />
+            </div>
+            <ul>
+              {{# buses:i}}
+                <li on-hover="highlight">{{Route}}{{Terminal}}
+                  {{# Actual}}
+                    {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
+                  {{/ Actual}}
+                  {{^ Actual}} arrives at {{formatTime(time)}}{{/ Actual}}
+                </li>
+              {{/ buses}}
+            </ul>
+          </div>
+        </script>
+        
+        
+        
+        <!-- =========================================== -->
+        
+        
+        <section>
+          <h2>Transitions</h2>
+        </section>
+        
+        <section>
+          <pre><code data-trim class="html">
 &lt;ul&gt;
   {{# buses:i}}
     &lt;li on-hover=&quot;highlight&quot; intro=&quot;slide&quot;&gt;{{Route}}{{Terminal}}
@@ -587,103 +587,103 @@ var ractiveView = new Ractive({
     &lt;/li&gt;
   {{/ buses}}
 &lt;/ul&gt;
-					</code></pre>
-				</section>
-				
-				<section>
-					<div class="output" data-output-handler="step09">
-					</div>
-				</section>
-				
-				<script type="text/template" id="output-template-step09">
-				  <div class="bus-stop-app">
-				    <a href="#" on-tap="closest" class="geolocate-stop" title="Find closest stop"></a>
-  				  <h2>Bus Stop: {{stop}}</h2>
-  				  <div class="actions">
-  				    <label>Update stop:</label> <input type="text" value="{{stop}}" />
-  				  </div>
-  				  <ul>
-  				    {{# buses:i}}
-  				      <li on-hover="highlight" intro="slide">{{Route}}{{Terminal}}
-  				        {{# Actual}}
-  				          {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
-  				        {{/ Actual}}
-  				        {{^ Actual}} arrives at {{formatTime(time)}}{{/ Actual}}
-  				      </li>
-  				    {{/ buses}}
-  				  </ul>
-				  </div>
-				</script>
-				
-				
-				
-				<!-- =========================================== -->
-				
-				
-				<section>
-					<h2>Animations</h2>
-				</section>
-				
-				<section>
-					<pre><code data-trim class="html">
+          </code></pre>
+        </section>
+        
+        <section>
+          <div class="output" data-output-handler="step09">
+          </div>
+        </section>
+        
+        <script type="text/template" id="output-template-step09">
+          <div class="bus-stop-app">
+            <a href="#" on-tap="closest" class="geolocate-stop" title="Find closest stop"></a>
+            <h2>Bus Stop: {{stop}}</h2>
+            <div class="actions">
+              <label>Update stop:</label> <input type="text" value="{{stop}}" />
+            </div>
+            <ul>
+              {{# buses:i}}
+                <li on-hover="highlight" intro="slide">{{Route}}{{Terminal}}
+                  {{# Actual}}
+                    {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
+                  {{/ Actual}}
+                  {{^ Actual}} arrives at {{formatTime(time)}}{{/ Actual}}
+                </li>
+              {{/ buses}}
+            </ul>
+          </div>
+        </script>
+        
+        
+        
+        <!-- =========================================== -->
+        
+        
+        <section>
+          <h2>Animations</h2>
+        </section>
+        
+        <section>
+          <pre><code data-trim class="html">
 ractiveView.observe('buses', function(oldV, newV) {
   _.each(newV, function(b, i) {
     var path = 'buses.' + i + '.minutes';
   
     ractiveView.animate(path, b.minutes, {
-	    duration: 1000,
-	    step: function(t, value) {
-	      ractiveView.set(path, poller.colorScale(value).hex());
-  	    return value;
-	    },
+      duration: 1000,
+      step: function(t, value) {
+        ractiveView.set(path, poller.colorScale(value).hex());
+        return value;
+      },
     });
   });
 });
-					</code></pre>
-				</section>
-				
-				<section>
-					<pre><code data-trim class="javascript">
+          </code></pre>
+        </section>
+        
+        <section>
+          <pre><code data-trim class="javascript">
 console.log('FAIL');
-					</code></pre>
-				</section>
-				
-				<section>
-					<div class="output" data-output-handler="step10">
-					</div>
-				</section>
-				
-				<script type="text/template" id="output-template-step10">
-				  <div class="bus-stop-app">
-				    <a href="#" on-tap="closest" class="geolocate-stop" title="Find closest stop"></a>
-  				  <h2>Bus Stop: {{stop}}</h2>
-  				  <div class="actions">
-  				    <label>Update stop:</label> <input type="text" value="{{stop}}" />
-  				  </div>
-  				  <ul>
-  				    {{# buses:i}}
-  				      <li style="background-color: {{bgColor}};" on-hover="highlight" intro="slide">{{Route}}{{Terminal}}
-  				        {{# Actual}}
-  				          {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
-  				        {{/ Actual}}
-  				        {{^ Actual}} arrives at {{formatTime(time)}}{{/ Actual}}
-  				      </li>
-  				    {{/ buses}}
-  				  </ul>
-				  </div>
-				</script>
+          </code></pre>
+        </section>
+        
+        <section>
+          <div class="output" data-output-handler="step10">
+          </div>
+        </section>
+        
+        <script type="text/template" id="output-template-step10">
+          <div class="bus-stop-app">
+            <a href="#" on-tap="closest" class="geolocate-stop" title="Find closest stop"></a>
+            <h2>Bus Stop: {{stop}}</h2>
+            <div class="actions">
+              <label>Update stop:</label> <input type="text" value="{{stop}}" />
+            </div>
+            <ul>
+              {{# buses:i}}
+                <li style="background-color: {{bgColor}};" on-hover="highlight" intro="slide">{{Route}}{{Terminal}}
+                  {{# Actual}}
+                    {{ DepartureText.toLowerCase() === 'due' ? 'is Due' : 'arrives in ' + DepartureText }}
+                  {{/ Actual}}
+                  {{^ Actual}} arrives at {{formatTime(time)}}{{/ Actual}}
+                </li>
+              {{/ buses}}
+            </ul>
+          </div>
+        </script>
 
-			</div>
-		</div>
+      </div>
+    </div>
 
-		<script src="bower_components/reveal.js/lib/js/head.min.js"></script>
-		<script src="bower_components/reveal.js/js/reveal.min.js"></script>
-		<script src="bower_components/ractive/build/Ractive.min.js"></script>
-		<script src="bower_components/jquery/jquery.min.js"></script>
-		<script src="bower_components/underscore/underscore-min.js"></script>
-		<script src="bower_components/momentjs/min/moment.min.js"></script>
-		<script src="bower_components/chroma-js/chroma.min.js"></script>
-		<script src="js/app.js"></script>
+    <script src="bower_components/reveal.js/lib/js/head.min.js"></script>
+    <script src="bower_components/reveal.js/js/reveal.min.js"></script>
+    <script src="bower_components/ractive/build/Ractive.min.js"></script>
+    <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/underscore/underscore-min.js"></script>
+    <script src="bower_components/momentjs/min/moment.min.js"></script>
+    <script src="bower_components/chroma-js/chroma.min.js"></script>
+    <script src="js/app.js"></script>
 
-	</body>
+  </body>
 </html>
