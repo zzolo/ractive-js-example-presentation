@@ -1,15 +1,15 @@
 /**
- * 
+ *
  */
 
 (function($) {
-  
+
   // Container for output callbacks
   var outputHandlers = {};
   var busStop = '43275';
   var poller;
   var stops = {};
-  
+
   // Get stops
   $.getJSON('js/stops.json', function(data) {
     stops = data;
@@ -25,25 +25,28 @@
     theme: Reveal.getQueryHash().theme,
     transition: Reveal.getQueryHash().transition || 'default',
     dependencies: [
-      { src: 'bower_components/reveal.js/lib/js/classList.js', 
+      { src: 'bower_components/reveal.js/lib/js/classList.js',
         condition: function() { return !document.body.classList; } },
-      { src: 'bower_components/reveal.js/plugin/highlight/highlight.js', 
+      { src: 'bower_components/reveal.js/plugin/highlight/highlight.js',
         async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-      { src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js', 
+      { src: 'bower_components/reveal.js/plugin/zoom-js/zoom.js',
         async: true, condition: function() { return !!document.body.classList; } },
-      { src: 'bower_components/reveal.js/plugin/notes/notes.js', 
+      { src: 'bower_components/reveal.js/plugin/notes/notes.js',
         async: true, condition: function() { return !!document.body.classList; } }
     ]
   });
-  
+
   // Event poll for bustop API
   function pollBusStopAPI() {
     var jsonpTemplate = 'http://svc.metrotransit.org/NexTrip/[[BUSSTOP]]?format=json&callback=?';
-    var interval = 3000;
+    var interval = 20000;
     var poolID;
-    
+    var cache = {};
+    var lastTime = Date.now();
+    var makingCall = false;
+
     var colorScale = chroma.scale(['#FF0040', '#40FF00'].reverse()).mode('hsl').domain([0, 20]);
-    
+
     var parseData = function(data) {
       data = _.map(data, function(s) {
         // /Date(1370124480000-0500)/ (This can't be right)
@@ -56,13 +59,26 @@
       data = _.sortBy(data, function(s) { return s.time.unix(); });
       return data;
     };
-    
+
     var getData = function() {
-      $.getJSON(jsonpTemplate.replace('[[BUSSTOP]]', busStop), function(data) {
-        $(window).trigger('bus', { buses: parseData(data) });
-      });
+      var currentBusStop = busStop;
+      var now = Date.now();
+
+      // Use a basic cache so the API is not hit so often
+      if (cache[currentBusStop] && now - lastTime < interval) {
+        $(window).trigger('bus', cache[currentBusStop]);
+      }
+      else if (!makingCall) {
+        makingCall = true;
+        $.getJSON(jsonpTemplate.replace('[[BUSSTOP]]', currentBusStop), function(data) {
+          lastTime = Date.now();
+          cache[currentBusStop] = { buses: parseData(data) };
+          $(window).trigger('bus', { buses: parseData(data) });
+          makingCall = false;
+        });
+      }
     };
-    
+
     return {
       poll: function() {
         pollID = window.setInterval(function() {
@@ -77,22 +93,22 @@
   }
   poller = new pollBusStopAPI();
   poller.poll();
-  
+
   // Get closest stop
   function getClosestStop(done) {
     var min;
-  
+
     navigator.geolocation.getCurrentPosition(function(position) {
       if (_.isObject(position)) {
         min = _.min(stops, function(s) {
           return Math.sqrt(Math.pow((s.lat - position.coords.latitude), 2) + Math.pow((s.lon - position.coords.longitude), 2));
         });
-        
+
         done(min.id);
       }
     });
   }
-  
+
   // Handle slide and render output
   function outputSlideHanderler(e) {
     // Re-render output
@@ -100,28 +116,28 @@
       var $output = $(this);
       var handler = $output.data('outputHandler');
       var template = $('#' + 'output-template-' + handler).html();
-      
+
       if (!_.isUndefined(outputHandlers[handler]) && _.isFunction(outputHandlers[handler])) {
         $output.html(outputHandlers[handler]($output, template));
       }
     });
   }
-  
+
   // Ouput handler final
   outputHandlers.final = function($el, template) {
     var ractiveView = new Ractive({
       el: $el,
       template: template,
       data: {
-        
+
       }
     });
   };
-  
+
   // Step 1
   outputHandlers.step01 = function($el, template) {
     busStop = '43275';
-  
+
     var ractiveView = new Ractive({
       el: $el,
       template: template,
@@ -160,11 +176,11 @@
       }
     });
   };
-  
+
   // Step 2
   outputHandlers.step02 = function($el, template) {
     busStop = '43275';
-  
+
     var ractiveView = new Ractive({
       el: $el,
       template: template,
@@ -173,16 +189,17 @@
         buses: []
       }
     });
-    
+    poller.update();
+
     $(window).on('bus', function(e, data) {
       ractiveView.set('buses', _.first(data.buses, 5));
     });
   };
-  
+
   // Step 3
   outputHandlers.step03 = function($el, template) {
     busStop = '43275';
-  
+
     var buses = [];
     var count = 0;
     var ractiveView = new Ractive({
@@ -193,12 +210,14 @@
         buses: buses
       }
     });
-    
+
     $(window).on('bus', function(e, data) {
       buses.push(data.buses[count++]);
     });
+
+    poller.update();
   };
-  
+
   // Step 4
   outputHandlers.step04 = function($el, template) {
     var ractiveView = new Ractive({
@@ -209,23 +228,23 @@
         buses: []
       }
     });
-    
+
     $(window).on('bus', function(e, data) {
       ractiveView.set('buses', _.first(data.buses, 5));
     });
-    
+
     ractiveView.observe('stop', function(e) {
       busStop = this.get('stop');
       poller.update();
     });
-    
+
     ractiveView.set('stop', '17982');
   };
-  
+
   // Step 5
   outputHandlers.step05 = function($el, template) {
     busStop = '43275';
-  
+
     var ractiveView = new Ractive({
       el: $el,
       template: template,
@@ -234,20 +253,22 @@
         buses: []
       }
     });
-    
+
     $(window).on('bus', function(e, data) {
       ractiveView.set('buses', _.first(data.buses, 5));
     });
-    
+
     ractiveView.on('highlight', function(e) {
       $(e.original.target).toggleClass('highlight');
     });
+
+    poller.update();
   };
-  
+
   // Step 6
   outputHandlers.step06 = function($el, template) {
     busStop = '43275';
-  
+
     var ractiveView = new Ractive({
       el: $el,
       template: template,
@@ -256,32 +277,34 @@
         buses: []
       }
     });
-    
+
     $(window).on('bus', function(e, data) {
       ractiveView.set('buses', _.first(data.buses, 5));
     });
-    
+
     ractiveView.observe('stop', function(e) {
       busStop = this.get('stop');
       poller.update();
     });
-    
+
     ractiveView.on('highlight', function(e) {
       $(e.original.target).toggleClass('highlight');
     });
-    
+
     ractiveView.on('closest', function(e) {
       e.original.preventDefault();
       getClosestStop(function(stop) {
          ractiveView.set('stop', stop);
       });
     });
+
+    poller.update();
   };
-  
+
   // Step 7
   outputHandlers.step07 = function($el, template) {
     busStop = '43275';
-  
+
     var ractiveView = new Ractive({
       el: $el,
       template: template,
@@ -290,32 +313,34 @@
         buses: []
       }
     });
-    
+
     $(window).on('bus', function(e, data) {
       ractiveView.set('buses', _.first(data.buses, 5));
     });
-    
+
     ractiveView.observe('stop', function(e) {
       busStop = this.get('stop');
       poller.update();
     });
-    
+
     ractiveView.on('highlight', function(e) {
       $(e.original.target).toggleClass('highlight');
     });
-    
+
     ractiveView.on('closest', function(e) {
       e.original.preventDefault();
       getClosestStop(function(stop) {
          ractiveView.set('stop', stop);
       });
     });
+
+    poller.update();
   };
-  
+
   // Step 8
   outputHandlers.step08 = function($el, template) {
     busStop = '43275';
-  
+
     var ractiveView = new Ractive({
       el: $el,
       template: template,
@@ -328,32 +353,34 @@
         }
       }
     });
-    
+
     $(window).on('bus', function(e, data) {
       ractiveView.set('buses', _.first(data.buses, 5));
     });
-    
+
     ractiveView.observe('stop', function(e) {
       busStop = this.get('stop');
       poller.update();
     });
-    
+
     ractiveView.on('highlight', function(e) {
       $(e.original.target).toggleClass('highlight');
     });
-    
+
     ractiveView.on('closest', function(e) {
       e.original.preventDefault();
       getClosestStop(function(stop) {
          ractiveView.set('stop', stop);
       });
     });
+
+    poller.update();
   };
-  
+
   // Step 9
   outputHandlers.step09 = function($el, template) {
     busStop = '43275';
-  
+
     var ractiveView = new Ractive({
       el: $el,
       template: template,
@@ -366,32 +393,34 @@
         }
       }
     });
-    
+
     $(window).on('bus', function(e, data) {
       ractiveView.set('buses', _.first(data.buses, 5));
     });
-    
+
     ractiveView.observe('stop', function(e) {
       busStop = this.get('stop');
       poller.update();
     });
-    
+
     ractiveView.on('highlight', function(e) {
       $(e.original.target).toggleClass('highlight');
     });
-    
+
     ractiveView.on('closest', function(e) {
       e.original.preventDefault();
       getClosestStop(function(stop) {
          ractiveView.set('stop', stop);
       });
     });
+
+    poller.update();
   };
-  
+
   // Step 10
   outputHandlers.step10 = function($el, template) {
     busStop = '43275';
-  
+
     var ractiveView = new Ractive({
       el: $el,
       template: template,
@@ -405,16 +434,16 @@
         }
       }
     });
-    
+
     $(window).on('bus', function(e, data) {
       ractiveView.set('buses', _.first(data.buses, 5));
     });
-    
+
     ractiveView.observe('stop', function(e) {
       busStop = this.get('stop');
       poller.update();
     });
-    
+
     /*
     // Want to animate buses[x].bgColor
     // which is based on buses[x].bgColor
@@ -423,7 +452,7 @@
     ractiveView.observe('buses', function(oldV, newV) {
       _.each(newV, function(b, i) {
         var path = 'bg.' + i;
-      
+
         ractiveView.animate(path, b.minutes, {
           duration: 1000,
           step: function(t, value) {
@@ -434,23 +463,25 @@
       });
     });
     */
-    
+
     ractiveView.on('highlight', function(e) {
       $(e.original.target).toggleClass('highlight');
     });
-    
+
     ractiveView.on('closest', function(e) {
       e.original.preventDefault();
       getClosestStop(function(stop) {
          ractiveView.set('stop', stop);
       });
     });
+
+    poller.update();
   };
 
-  
+
   // Event listening to run code in a slide
   Reveal.addEventListener('slidechanged', outputSlideHanderler);
   Reveal.addEventListener('ready', outputSlideHanderler);
-  
-  
+
+
 })(jQuery);

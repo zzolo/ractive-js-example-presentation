@@ -22,7 +22,7 @@
     <script>
       document.write( '<link rel="stylesheet" href="bower_components/reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
     </script>
-    
+
     <link rel="stylesheet" href="css/styles.css">
 
     <!--[if lt IE 9]>
@@ -42,41 +42,41 @@
             <small>Created by Alan Pala<a href="//zzolo.org">zzolo</a></small>
           </p>
         </section>
-        
+
         <section>
           <h3><a href="http://www.ractivejs.org/">ractivejs.org</a> <br><br></h3>
           <h3><a href="http://zzolo.org/ractive-js-example-presentation/">zzolo.org/ractive-js-example-presentation</a></h3>
         </section>
-        
+
         <section>
           <h2>What is Ractive.js?</h2>
         </section>
-        
+
         <section>
           <h3>Data binding,</h3>
           <h3>DOM updates,</h3>
           <h3>Event handling</h3>
         </section>
-        
+
         <section>
           <h3>Model-<strong>View</strong>-<em>Controller</em></h3>
         </section>
-        
+
         <section>
           <h3>AngularJS</h3>
           <h3>Ember</h3>
           <h3>Backbone(.stickit)</h3>
         </section>
-        
+
         <section>
           <h2>Bus Stop</h2>
         </section>
-        
+
         <section>
           <div class="output" data-output-handler="step10">
           </div>
         </section>
-        
+
         <section>
           <h2>Data</h2>
         </section>
@@ -106,14 +106,14 @@
 ]
           </code></pre>
         </section>
-        
-        
-        
+
+
+
         <!-- =========================================== -->
-        
-        
-        
-        
+
+
+
+
         <section>
           <h2>Basic Template and Render</h2>
         </section>
@@ -148,12 +148,12 @@ var ractiveView = new Ractive({
 });
           </code></pre>
         </section>
-        
+
         <section>
           <div class="output" data-output-handler="step01">
           </div>
         </section>
-        
+
         <script type="text/template" id="output-template-step01">
           <h2>Bus Stop: {{stop}}</h2>
           <ul>
@@ -162,20 +162,20 @@ var ractiveView = new Ractive({
             {{/ buses}}
           </ul>
         </script>
-        
-        
-        
+
+
+
         <!-- =========================================== -->
-        
-        
+
+
         <section>
           <h2>Styles, <a href="https://github.com/janl/mustache.js/">Mustache</a>, and Polling</h2>
         </section>
-        
+
         <section>
           <h3>Mustache</h3>
         </section>
-        
+
         <section>
           <pre><code data-trim class="html">
 &lt;h2&gt;Bus Stop: {{stop}}&lt;/h2&gt;
@@ -191,11 +191,11 @@ var ractiveView = new Ractive({
 &lt;/ul&gt;
           </code></pre>
         </section>
-        
+
         <section>
           <h3>Poll data</h3>
         </section>
-        
+
         <section>
           <pre><code data-trim class="javascript">
 var ractiveView = new Ractive({
@@ -212,12 +212,12 @@ onBusUpdate(function(data) {
 });
           </code></pre>
         </section>
-        
+
         <section>
           <div class="output" data-output-handler="step02">
           </div>
         </section>
-        
+
         <script type="text/template" id="output-template-step02">
           <div class="bus-stop-app">
             <h2>Bus Stop: {{stop}}</h2>
@@ -233,16 +233,16 @@ onBusUpdate(function(data) {
             </ul>
           </div>
         </script>
-        
-        
-        
+
+
+
         <!-- =========================================== -->
-        
-        
+
+
         <section>
           <h2>Data Updates</h2>
         </section>
-        
+
         <section>
           <pre><code data-trim class="javascript">
 var buses = { a: 1, b: 2 };
@@ -258,11 +258,11 @@ buses.c = 4;
 ractiveView.update('buses');
           </code></pre>
         </section>
-        
+
         <section>
           <h3><a href="https://github.com/Rich-Harris/Ractive/wiki/Array-modification">Array modifications</a></h3>
         </section>
-        
+
         <section>
           <pre><code data-trim class="javascript">
 var buses = [];
@@ -281,12 +281,12 @@ onBusUpdate(function(data) {
 });
           </code></pre>
         </section>
-        
+
         <section>
           <div class="output" data-output-handler="step03">
           </div>
         </section>
-        
+
         <script type="text/template" id="output-template-step03">
           <div class="bus-stop-app">
             <h2>Bus Stop: {{stop}}</h2>
@@ -302,16 +302,16 @@ onBusUpdate(function(data) {
             </ul>
           </div>
         </script>
-        
-        
-        
+
+
+
         <!-- =========================================== -->
-        
-        
+
+
         <section>
           <h2>Observe</h2>
         </section>
-        
+
         <section>
           <pre><code data-trim class="javascript">
 ractiveView.observe('stop', function(e) {
@@ -322,12 +322,12 @@ ractiveView.observe('stop', function(e) {
 ractiveView.set('stop', '17982');
           </code></pre>
         </section>
-        
+
         <section>
           <div class="output" data-output-handler="step04">
           </div>
         </section>
-        
+
         <script type="text/template" id="output-template-step04">
           <div class="bus-stop-app">
             <h2>Bus Stop: {{stop}}</h2>
@@ -343,20 +343,20 @@ ractiveView.set('stop', '17982');
             </ul>
           </div>
         </script>
-        
-        
-        
+
+
+
         <!-- =========================================== -->
-        
-        
+
+
         <section>
           <h2>Events</h2>
         </section>
-        
+
         <section>
           <h3>Highlighting with Hover</h3>
         </section>
-        
+
         <section>
           <pre><code data-trim class="html">
 &lt;h2&gt;Bus Stop: {{stop}}&lt;/h2&gt;
@@ -372,7 +372,7 @@ ractiveView.set('stop', '17982');
 &lt;/ul&gt;
           </code></pre>
         </section>
-        
+
         <section>
           <pre><code data-trim class="javascript">
 ractiveView.on('highlight', function(e) {
@@ -380,12 +380,12 @@ ractiveView.on('highlight', function(e) {
 });
           </code></pre>
         </section>
-        
+
         <section>
           <div class="output" data-output-handler="step05">
           </div>
         </section>
-        
+
         <script type="text/template" id="output-template-step05">
           <div class="bus-stop-app">
             <h2>Bus Stop: {{stop}}</h2>
@@ -401,11 +401,11 @@ ractiveView.on('highlight', function(e) {
             </ul>
           </div>
         </script>
-        
+
         <section>
           <h3>Geolocate with Tap</h3>
         </section>
-        
+
         <section>
           <pre><code data-trim class="html">
 &lt;a href=&quot;#&quot; on-tap=&quot;closest&quot; class=&quot;geolocate-stop&quot; title=&quot;Find closest stop&quot;&gt;&lt;/a&gt;
@@ -422,7 +422,7 @@ ractiveView.on('highlight', function(e) {
 &lt;/ul&gt;
           </code></pre>
         </section>
-        
+
         <section>
           <pre><code data-trim class="javascript">
 ractiveView.on('closest', function(e) {
@@ -433,12 +433,12 @@ ractiveView.on('closest', function(e) {
 });
           </code></pre>
         </section>
-        
+
         <section>
           <div class="output" data-output-handler="step06">
           </div>
         </section>
-        
+
         <script type="text/template" id="output-template-step06">
           <div class="bus-stop-app">
             <a href="#" on-tap="closest" class="geolocate-stop" title="Find closest stop"></a>
@@ -455,16 +455,16 @@ ractiveView.on('closest', function(e) {
             </ul>
           </div>
         </script>
-        
-        
-        
+
+
+
         <!-- =========================================== -->
-        
-        
+
+
         <section>
           <h2>Input</h2>
         </section>
-        
+
         <section>
           <pre><code data-trim class="html">
 &lt;a href=&quot;#&quot; on-tap=&quot;closest&quot; class=&quot;geolocate-stop&quot; title=&quot;Find closest stop&quot;&gt;&lt;/a&gt;
@@ -474,12 +474,12 @@ ractiveView.on('closest', function(e) {
 &lt;/div&gt;
           </code></pre>
         </section>
-        
+
         <section>
           <div class="output" data-output-handler="step07">
           </div>
         </section>
-        
+
         <script type="text/template" id="output-template-step07">
           <div class="bus-stop-app">
             <a href="#" on-tap="closest" class="geolocate-stop" title="Find closest stop"></a>
@@ -499,16 +499,16 @@ ractiveView.on('closest', function(e) {
             </ul>
           </div>
         </script>
-        
-        
-        
+
+
+
         <!-- =========================================== -->
-        
-        
+
+
         <section>
           <h2>Formatters</h2>
         </section>
-        
+
         <section>
           <pre><code data-trim class="javascript">
 var ractiveView = new Ractive({
@@ -525,7 +525,7 @@ var ractiveView = new Ractive({
 });
           </code></pre>
         </section>
-        
+
         <section>
           <pre><code data-trim class="html">
 &lt;ul&gt;
@@ -540,12 +540,12 @@ var ractiveView = new Ractive({
 &lt;/ul&gt;
           </code></pre>
         </section>
-        
+
         <section>
           <div class="output" data-output-handler="step08">
           </div>
         </section>
-        
+
         <script type="text/template" id="output-template-step08">
           <div class="bus-stop-app">
             <a href="#" on-tap="closest" class="geolocate-stop" title="Find closest stop"></a>
@@ -565,16 +565,16 @@ var ractiveView = new Ractive({
             </ul>
           </div>
         </script>
-        
-        
-        
+
+
+
         <!-- =========================================== -->
-        
-        
+
+
         <section>
           <h2>Transitions</h2>
         </section>
-        
+
         <section>
           <pre><code data-trim class="html">
 &lt;ul&gt;
@@ -589,12 +589,12 @@ var ractiveView = new Ractive({
 &lt;/ul&gt;
           </code></pre>
         </section>
-        
+
         <section>
           <div class="output" data-output-handler="step09">
           </div>
         </section>
-        
+
         <script type="text/template" id="output-template-step09">
           <div class="bus-stop-app">
             <a href="#" on-tap="closest" class="geolocate-stop" title="Find closest stop"></a>
@@ -614,22 +614,22 @@ var ractiveView = new Ractive({
             </ul>
           </div>
         </script>
-        
-        
-        
+
+
+
         <!-- =========================================== -->
-        
-        
+
+
         <section>
           <h2>Animations</h2>
         </section>
-        
+
         <section>
           <pre><code data-trim class="html">
 ractiveView.observe('buses', function(oldV, newV) {
   _.each(newV, function(b, i) {
     var path = 'buses.' + i + '.minutes';
-  
+
     ractiveView.animate(path, b.minutes, {
       duration: 1000,
       step: function(t, value) {
@@ -641,18 +641,18 @@ ractiveView.observe('buses', function(oldV, newV) {
 });
           </code></pre>
         </section>
-        
+
         <section>
           <pre><code data-trim class="javascript">
 console.log('FAIL');
           </code></pre>
         </section>
-        
+
         <section>
           <div class="output" data-output-handler="step10">
           </div>
         </section>
-        
+
         <script type="text/template" id="output-template-step10">
           <div class="bus-stop-app">
             <a href="#" on-tap="closest" class="geolocate-stop" title="Find closest stop"></a>
@@ -684,6 +684,19 @@ console.log('FAIL');
     <script src="bower_components/momentjs/min/moment.min.js"></script>
     <script src="bower_components/chroma-js/chroma.min.js"></script>
     <script src="js/app.js"></script>
+
+
+    <!-- GA -->
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-94405-11']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
 
   </body>
 </html>
